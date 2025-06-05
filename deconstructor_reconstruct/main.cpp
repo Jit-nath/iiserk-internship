@@ -10,6 +10,6 @@ int main()
     Atom atom = molecule.getAtomById(1);
     atom.show();
     atom.show_pdb_format();
-    
+
     return 0;
 }

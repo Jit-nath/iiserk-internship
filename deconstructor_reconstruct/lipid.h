@@ -1,23 +1,21 @@
 #ifndef LIPID_H
 #define LIPID_H
 
-#include "include.h"
 #include "atom.h"
 #include "bond_detector.h"
+#include "include.h"
 
-class lipid
-{
+class lipid {
 private:
     fstream file;
     map<int, vector<int>> adjacency_list;
     string file_contents;
 
 public:
-    lipid(const string &filename)
+    lipid(const string& filename)
     {
         file.open(filename);
-        if (!file.is_open())
-        {
+        if (!file.is_open()) {
             cerr << "Error: Could not open file " << filename << endl;
             return;
         }
@@ -34,15 +32,12 @@ public:
         istringstream stream(file_contents);
         string line;
 
-        while (getline(stream, line))
-        {
+        while (getline(stream, line)) {
             if (line.length() < 54)
                 continue; // Skip lines that are too short
 
-            if (line.substr(0, 4) == "ATOM" || line.substr(0, 6) == "HETATM")
-            {
-                try
-                {
+            if (line.substr(0, 4) == "ATOM" || line.substr(0, 6) == "HETATM") {
+                try {
                     int atomId = stoi(line.substr(6, 5));
                     if (atomId != id)
                         continue;
@@ -56,9 +51,7 @@ public:
                     double z = stod(line.substr(46, 8));
 
                     return Atom(atomId, atomName, x, y, z);
-                }
-                catch (const exception &e)
-                {
+                } catch (const exception& e) {
                     cerr << "Error parsing atom with ID " << id << endl;
                 }
             }
@@ -69,7 +62,7 @@ public:
         return Atom();
     }
 
-    const map<int, vector<int>> &getAdjacencyList() const
+    const map<int, vector<int>>& getAdjacencyList() const
     {
         return adjacency_list;
     }
