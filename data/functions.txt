@@ -1,0 +1,14 @@
+deconstructor molecule(file);
+
+molecule.deconstruct();
+
+molecule.viewGraph();
+
+molecule.saveGraph();
+
+
+reconstructor molecule(file);
+
+molecule.reconstruct();
+
+

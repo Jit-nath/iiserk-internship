@@ -1,15 +1,11 @@
-#include "atom.h"
-#include "bond_detector.h"
-#include "include.h"
-#include "lipid.h"
-#include "reconstructor.h"
+#include "deconstructor/deconstructor.h"
 
-int main()
-{
-    lipid molecule("lipid.pdb");
-    Atom atom = molecule.getAtomById(1);
-    atom.show();
-    atom.show_pdb_format();
+int main() {
+  deconstructor molecule("./lipid.pdb");
 
-    return 0;
+  molecule.generateGraph(atom(1, "N", -1.306, 0.669, 20.620));
+
+  molecule.save();
+
+  return 0;
 }
