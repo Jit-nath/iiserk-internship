@@ -19,7 +19,6 @@ struct atom {
     double tempFactor;
     string chainID;
 
-    // Comparison operator for sorting (based on atomID)
     bool operator<(const atom &other) const {
         return atomID < other.atomID;
     }
