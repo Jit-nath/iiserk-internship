@@ -1,2 +1,3 @@
 *.xtc
 *.pdb
+.ipynb-checkpoint/
